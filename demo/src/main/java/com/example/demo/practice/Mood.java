@@ -1,6 +1,8 @@
 package com.example.demo.practice;
 
+import javax.persistence.*;
 import java.time.LocalDate;
+
 
 public class Mood {
     enum Mood_value {
@@ -8,7 +10,14 @@ public class Mood {
         NEUTRAL,
         ANGRY,
     }
+
+
+    @Column
     private Mood_value value;
+
+    @Column
     private LocalDate date;
-    private Long id_roomie;
+
+    @ManyToOne
+    private Roomie roomie;
 }

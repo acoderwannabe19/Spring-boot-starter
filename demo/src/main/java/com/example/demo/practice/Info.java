@@ -1,23 +1,12 @@
 package com.example.demo.practice;
 
+import javax.persistence.Column;
+import javax.persistence.ManyToOne;
+
 public class Info {
+    @Column
     private String content;
 
-    @Override
-    public String toString() {
-        return "Info{" +
-                "content='" + content + '\'' +
-                '}';
-    }
-
-    public String getContent() {
-        return content;
-    }
-
-    public void setContent(String content) {
-        this.content = content;
-    }
-
-    public Info() {
-    }
+    @ManyToOne
+    private CHO poster;
 }

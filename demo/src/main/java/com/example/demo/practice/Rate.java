@@ -1,5 +1,7 @@
 package com.example.demo.practice;
 
+import javax.persistence.Column;
+
 public class Rate {
     enum Star {
         ONE,
@@ -8,33 +10,12 @@ public class Rate {
         FOUR,
         FIVE
     }
+
+    @Column
     private Star value;
+
+    @Column
     private String comment;
 
-    @Override
-    public String toString() {
-        return "Rate{" +
-                "value=" + value +
-                ", comment='" + comment + '\'' +
-                '}';
-    }
 
-    public Star getValue() {
-        return value;
-    }
-
-    public void setValue(Star value) {
-        this.value = value;
-    }
-
-    public String getComment() {
-        return comment;
-    }
-
-    public void setComment(String comment) {
-        this.comment = comment;
-    }
-
-    public Rate() {
-    }
 }

@@ -1,90 +1,45 @@
 package com.example.demo.practice;
 
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.SequenceGenerator;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
-public class Roomie {
-    public Long getId_roomie() {
-        return id_roomie;
-    }
+import javax.persistence.*;
+import java.io.Serializable;
+import java.util.List;
 
-    public void setId_roomie(Long id_roomie) {
-        this.id_roomie = id_roomie;
-    }
-
-    public String getFull_name() {
-        return full_name;
-    }
-
-    public void setFull_name(String full_name) {
-        this.full_name = full_name;
-    }
-
-    public String getUsername() {
-        return username;
-    }
-
-    public void setUsername(String username) {
-        this.username = username;
-    }
-
-    public String getService() {
-        return service;
-    }
-
-    public void setService(String service) {
-        this.service = service;
-    }
-
-    public String getLastMandate() {
-        return lastMandate;
-    }
-
-    public void setLastMandate(String lastMandate) {
-        this.lastMandate = lastMandate;
-    }
-
-    public boolean isCHO() {
-        return isCHO;
-    }
-
-    public void setCHO(boolean CHO) {
-        isCHO = CHO;
-    }
-
-    public Roomie() {
-    }
+@Entity
+@Getter
+@Setter
+@NoArgsConstructor
+@AllArgsConstructor
+public class Roomie implements Serializable {
 
     @Id
-    @SequenceGenerator(
-            name = "roomie_sequence",
-            sequenceName = "roomie_sequence",
-            allocationSize = 1
-    )
-    @GeneratedValue(
-            strategy = GenerationType.SEQUENCE,
-            generator = "roomie_sequence"
-    )
-    private Long id_roomie;
+    @GeneratedValue
+    private Long id;
+    
+    @Column(nullable = false)
     private String full_name;
+
+    @Column(nullable = false)
     private String username;
 
-    @Override
-    public String toString() {
-        return "Roomie{" +
-                "id_roomie=" + id_roomie +
-                ", full_name='" + full_name + '\'' +
-                ", username='" + username + '\'' +
-                ", service='" + service + '\'' +
-                ", lastMandate='" + lastMandate + '\'' +
-                ", isCHO=" + isCHO +
-                '}';
-    }
-
+    @Column
     private String service;
+
+    @Column
     private String lastMandate;
+
+    @Column
     private boolean isCHO;
+
+    @ManyToMany
+    List<Roomie> giver;
+
+    @ManyToMany
+    List<Roomie> recipient;
+
 
 }
