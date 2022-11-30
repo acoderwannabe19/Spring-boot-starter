@@ -1,4 +1,4 @@
-package com.example.demo.practice;
+package com.example.demo.classes;
 
 public class Story extends Info{
     private String url;

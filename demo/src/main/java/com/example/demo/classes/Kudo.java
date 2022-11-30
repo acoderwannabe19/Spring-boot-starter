@@ -1,4 +1,4 @@
-package com.example.demo.practice;
+package com.example.demo.classes;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -8,6 +8,7 @@ import lombok.Setter;
 import javax.persistence.*;
 import java.io.Serializable;
 import java.time.LocalDate;
+import java.util.List;
 import java.util.Objects;
 
 @Entity
@@ -29,10 +30,10 @@ public class Kudo implements Serializable{
     KudoKey id;
 
     @ManyToOne
-    private Roomie giver;
+    Roomie giver;
 
     @ManyToOne
-    private Roomie recipient;
+    Roomie recipient;
 
     @Column(nullable = false)
     private Level appreciation;

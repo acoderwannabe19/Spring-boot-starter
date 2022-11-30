@@ -1,13 +1,17 @@
-package com.example.demo.practice;
+package com.example.demo.classes;
+
+import lombok.Getter;
 
 import javax.persistence.*;
-import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.List;
 
-
+@Entity
+@Getter
 public class GroupCHO {
-    List<CHO> chos;
+
+    @ElementCollection
+    private List<Long> chos;
 
     @Id
     @GeneratedValue
@@ -16,7 +20,8 @@ public class GroupCHO {
     @Column
     private LocalDate creation_date;
 
+
     @OneToMany
-    private List<Roomie> raters;
+    private List<Rate> rates;
 
 }
