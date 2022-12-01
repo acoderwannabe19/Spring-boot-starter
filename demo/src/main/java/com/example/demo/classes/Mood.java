@@ -1,5 +1,6 @@
 package com.example.demo.classes;
 
+import lombok.AllArgsConstructor;
 import lombok.Getter;
 
 import javax.persistence.*;
@@ -7,23 +8,26 @@ import java.time.LocalDate;
 
 @Entity
 @Getter
+@AllArgsConstructor
 public class Mood {
-    enum Mood_value {
+    public Mood() {
+    }
+
+    public Mood(Mood_value value, LocalDate date, Roomie roomie) {
+        this.value = value;
+        this.date = date;
+        this.roomie = roomie;
+    }
+
+    public enum Mood_value {
         HAPPY,
         NEUTRAL,
         ANGRY,
     }
 
     @Id
-    @SequenceGenerator(
-            name = "mood_sequence",
-            sequenceName = "mood_sequence",
-            allocationSize = 1
-    )
-    @GeneratedValue(
-            strategy = GenerationType.SEQUENCE,
-            generator = "mood_sequence"
-    )
+    @GeneratedValue
+    private Long id;
 
 
     @Column

@@ -1,15 +1,27 @@
 package com.example.demo.classes;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.ManyToOne;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+
+import javax.persistence.*;
 import java.time.LocalDate;
-import java.time.temporal.WeekFields;
+
 
 @Entity
+@Getter
+@AllArgsConstructor
 public class Info {
+    public Info() {
+    }
+
+    public Info(String content, LocalDate date, Roomie roomie) {
+        this.content = content;
+        this.date = date;
+        this.roomie = roomie;
+    }
+
     @Id
+    @GeneratedValue
     private Long id;
 
     @Column
@@ -17,6 +29,9 @@ public class Info {
 
     @Column
     private LocalDate date;
+
+    @ManyToOne
+    private Roomie roomie;
 
 
 }

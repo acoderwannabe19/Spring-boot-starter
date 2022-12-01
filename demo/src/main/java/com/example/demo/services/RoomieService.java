@@ -1,12 +1,16 @@
 package com.example.demo.services;
 
+import com.example.demo.classes.Mood;
 import com.example.demo.classes.Roomie;
+import com.example.demo.dto.RoomieDTO;
 import com.example.demo.repositories.RoomieRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Service
 public class RoomieService {
@@ -19,8 +23,19 @@ public class RoomieService {
 
     public List<Roomie> getRoomies() {
         return roomieRepository.findAll();
+
     }
 
+    private RoomieDTO convertDataIntoDTO(Roomie roomie) {
+        // create instance of our UserLocationDTO class
+        RoomieDTO dto = new RoomieDTO();
+
+        //set username and userId in dto from the userData
+        dto.setFull_name(roomie.getFull_name());
+        dto.setService(roomie.getService());
+        dto.setCHO(roomie.isCHO());
+        return dto;
+    }
 
     public void addNewRoomie(Roomie roomie) {
         Optional<Roomie> roomieByUsername = roomieRepository.findRoomieByUsername(roomie.getUsername());
@@ -36,5 +51,16 @@ public class RoomieService {
             throw new IllegalStateException("Roomie with id " + id + " does not exist.");
         }
         roomieRepository.deleteById(id);
+    }
+
+    public List<Roomie> getRoomie(String username) {
+        List<Roomie> roomies = new ArrayList<>();
+        for (Roomie roomie: roomieRepository.findAll()
+        ) {
+            if (roomie.getUsername().equals(username)) {
+                roomies.add(roomie);
+            }
+        }
+        return roomies;
     }
 }

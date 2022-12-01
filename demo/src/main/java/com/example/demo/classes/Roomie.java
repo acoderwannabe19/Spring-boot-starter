@@ -1,17 +1,19 @@
 package com.example.demo.classes;
 
 import lombok.AllArgsConstructor;
+import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
 
 import javax.persistence.*;
 import java.time.LocalDate;
 
+
 @Entity
 @Getter
 @Setter
 @AllArgsConstructor
-public class Roomie  {
+public class Roomie {
     public Roomie() {
     }
 

@@ -11,8 +11,8 @@ import java.util.List;
 @Getter
 public class GroupCHO {
 
-    @ElementCollection
-    private List<Long> chos;
+    @OneToMany
+    private List<Roomie> chos;
 
     @Id
     @GeneratedValue

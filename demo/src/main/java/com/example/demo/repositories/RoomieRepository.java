@@ -1,6 +1,7 @@
 package com.example.demo.repositories;
 
 import com.example.demo.classes.Roomie;
+import com.example.demo.dto.RoomieDTO;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
