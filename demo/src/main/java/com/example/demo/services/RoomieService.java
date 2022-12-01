@@ -21,6 +21,7 @@ public class RoomieService {
         return roomieRepository.findAll();
     }
 
+
     public void addNewRoomie(Roomie roomie) {
         Optional<Roomie> roomieByUsername = roomieRepository.findRoomieByUsername(roomie.getUsername());
         if(roomieByUsername.isPresent()) {

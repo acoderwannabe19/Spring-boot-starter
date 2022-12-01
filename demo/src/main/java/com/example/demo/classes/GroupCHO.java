@@ -3,6 +3,7 @@ package com.example.demo.classes;
 import lombok.Getter;
 
 import javax.persistence.*;
+import javax.xml.bind.annotation.XmlAnyElement;
 import java.time.LocalDate;
 import java.util.List;
 
@@ -25,3 +26,4 @@ public class GroupCHO {
     private List<Rate> rates;
 
 }
+

@@ -6,26 +6,17 @@ import lombok.Setter;
 
 import javax.persistence.*;
 import java.time.LocalDate;
-import java.util.List;
 
 @Entity
 @Getter
 @Setter
 @AllArgsConstructor
-public class Roomie{
+public class Roomie  {
     public Roomie() {
     }
 
     @Id
-    @SequenceGenerator(
-            name = "roomie_sequence",
-            sequenceName = "roomie_sequence",
-            allocationSize = 1
-    )
-    @GeneratedValue(
-            strategy = GenerationType.SEQUENCE,
-            generator = "roomie_sequence"
-    )
+    @GeneratedValue
     private Long id;
 
     @Column(nullable = false)
@@ -43,14 +34,7 @@ public class Roomie{
     @Column
     private boolean isCHO;
 
-    @OneToMany(mappedBy = "giver")
-    List<Kudo> given_kudos;
 
-    @OneToMany(mappedBy = "recipient")
-    List<Kudo> received_kudos;
-
-    @OneToMany(mappedBy = "roomie")
-    List<Mood> roomies_moods;
 
 
 

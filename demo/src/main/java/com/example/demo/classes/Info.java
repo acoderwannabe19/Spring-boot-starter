@@ -18,6 +18,5 @@ public class Info {
     @Column
     private LocalDate date;
 
-    @ManyToOne
-    private CHO poster;
+
 }
