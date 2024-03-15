@@ -11,5 +11,5 @@ import java.util.Optional;
 @Repository
 public interface RoomieRepository extends JpaRepository<Roomie, Long> {
     @Query("SELECT r FROM Roomie r WHERE r.username = ?1 ")
-    Optional<Roomie> findRoomieByUsername(String username);
+    Roomie findRoomieByUsername(String username);
 }

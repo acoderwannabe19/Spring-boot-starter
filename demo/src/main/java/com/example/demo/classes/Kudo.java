@@ -2,7 +2,6 @@ package com.example.demo.classes;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
-import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
@@ -53,26 +52,4 @@ public class Kudo {
         this.date = date;
     }
 }
-//@Embeddable
-//class KudoKey implements Serializable {
-//
-//    private Long id_giver;
-//
-//    private Long id_recipient;
-//
-//    @Override
-//    public boolean equals(Object o) {
-//        if (this == o) return true;
-//        if (o == null || getClass() != o.getClass()) return false;
-//        KudoKey kudoKey = (KudoKey) o;
-//        return Objects.equals(id_giver, kudoKey.id_giver) && Objects.equals(id_recipient, kudoKey.id_recipient);
-//    }
-//
-//    @Override
-//    public int hashCode() {
-//        return Objects.hash(id_giver, id_recipient);
-//    }
-//
-//
-//
-//}
+

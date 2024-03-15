@@ -3,16 +3,20 @@ package com.example.demo.classes;
 import lombok.Getter;
 
 import javax.persistence.*;
-import javax.xml.bind.annotation.XmlAnyElement;
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
 @Getter
 public class GroupCHO {
+    public GroupCHO() {
+    }
 
-    @OneToMany
-    private List<Roomie> chos;
+    public GroupCHO(LocalDate creation_date, List<Roomie> chos) {
+        this.creation_date = creation_date;
+        this.chos = chos;
+    }
 
     @Id
     @GeneratedValue
@@ -21,9 +25,11 @@ public class GroupCHO {
     @Column
     private LocalDate creation_date;
 
-
     @OneToMany
-    private List<Rate> rates;
+    private List<Roomie> chos = new ArrayList<>(3);
+
+
+
 
 }
 

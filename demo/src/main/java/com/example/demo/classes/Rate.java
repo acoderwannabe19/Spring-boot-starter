@@ -1,9 +1,11 @@
 package com.example.demo.classes;
 
+import lombok.Getter;
+
 import javax.persistence.*;
-import java.util.List;
 
 @Entity
+@Getter
 public class Rate {
     enum Star {
         ONE,
@@ -21,9 +23,6 @@ public class Rate {
 
     @Column
     private String comment;
-
-    @ManyToOne
-    Roomie rater;
 
     @ManyToOne
     GroupCHO groupCHO;

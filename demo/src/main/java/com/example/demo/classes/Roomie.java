@@ -1,7 +1,6 @@
 package com.example.demo.classes;
 
 import lombok.AllArgsConstructor;
-import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -37,11 +36,7 @@ public class Roomie {
     private boolean isCHO;
 
 
-
-
-
     public Roomie(String full_name, String username, String service, LocalDate lastMandate, boolean isCHO) {
-
         this.full_name = full_name;
         this.username = username;
         this.service = service;

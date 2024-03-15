@@ -1,13 +1,7 @@
 package com.example.demo.configs;
 
-import com.example.demo.classes.Info;
-import com.example.demo.classes.Kudo;
-import com.example.demo.classes.Mood;
-import com.example.demo.classes.Roomie;
-import com.example.demo.repositories.InfoRepository;
-import com.example.demo.repositories.KudoRepository;
-import com.example.demo.repositories.MoodRepository;
-import com.example.demo.repositories.RoomieRepository;
+import com.example.demo.classes.*;
+import com.example.demo.repositories.*;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -20,7 +14,7 @@ import java.util.List;
 public class RoomieConfig {
 
     @Bean
-    CommandLineRunner commandLineRunner3 (RoomieRepository roomieRepository, KudoRepository kudoRepository, MoodRepository moodRepository, InfoRepository infoRepository) {
+    CommandLineRunner commandLineRunner (RoomieRepository roomieRepository, KudoRepository kudoRepository, MoodRepository moodRepository, InfoRepository infoRepository, GroupCHORepository groupCHORepository) {
         return args -> {
             Roomie bouya = new Roomie(
                     "Bouya KANDE",
@@ -54,15 +48,15 @@ public class RoomieConfig {
             roomieRepository.saveAll(List.of(bouya, fatou, seni, ndeye_fatou));
 
             Kudo to_fatou = new Kudo(
-                    roomieRepository.findRoomieByUsername("bouyakande").orElse(null),
-                    roomieRepository.findRoomieByUsername("fatousall").orElse(null),
+                    roomieRepository.findRoomieByUsername("bouyakande"),
+                    roomieRepository.findRoomieByUsername("fatousall"),
                     Kudo.Level.EXTRAORDINAIRE,
                     "Way to go Fatou!",
                     LocalDate.of(2022, Month.NOVEMBER, 30)
             );
             Kudo to_ndeye_fatou = new Kudo(
-                    roomieRepository.findRoomieByUsername("seniniass").orElse(null),
-                    roomieRepository.findRoomieByUsername("ndeyefatousall").orElse(null),
+                    roomieRepository.findRoomieByUsername("seniniass"),
+                    roomieRepository.findRoomieByUsername("ndeyefatousall"),
                     Kudo.Level.EXCELLENT_TRAVAIL,
                     "Way to go Fatou!",
                     LocalDate.of(2022, Month.NOVEMBER, 26)
@@ -72,26 +66,34 @@ public class RoomieConfig {
             Mood bouya_mood1 = new Mood(
                     Mood.Mood_value.HAPPY,
                     LocalDate.of(2022, Month.DECEMBER, 1),
-                    roomieRepository.findRoomieByUsername("bouyakande").orElse(null)
+                    roomieRepository.findRoomieByUsername("bouyakande")
             );
             Mood bouya_mood2 = new Mood(
                     Mood.Mood_value.NEUTRAL,
                     LocalDate.of(2022, Month.DECEMBER, 2),
-                    roomieRepository.findRoomieByUsername("bouyakande").orElse(null)
+                    roomieRepository.findRoomieByUsername("bouyakande")
             );
             Mood seni_mood = new Mood(
                     Mood.Mood_value.ANGRY,
                     LocalDate.of(2022, Month.DECEMBER, 2),
-                    roomieRepository.findRoomieByUsername("seniniass").orElse(null)
+                    roomieRepository.findRoomieByUsername("seniniass")
             );
             moodRepository.saveAll(List.of(bouya_mood1, bouya_mood2, seni_mood));
 
             Info seni_info = new Info(
                     "Pause Ataya ak Thiaf les gars, buleenko keenn neettali!",
                     LocalDate.of(2022, Month.NOVEMBER, 3),
-                    roomieRepository.findRoomieByUsername("seniniass").orElse(null)
+                    roomieRepository.findRoomieByUsername("seniniass")
             );
             infoRepository.save(seni_info);
+
+            GroupCHO first_group = new GroupCHO(
+                    LocalDate.of(2022, Month.DECEMBER, 1),
+                    List.of(roomieRepository.findRoomieByUsername("seniniass"), roomieRepository.findRoomieByUsername("bouyakande"), roomieRepository.findRoomieByUsername("fatousall"))
+            );
+            groupCHORepository.save(first_group);
+
+
 
 
 

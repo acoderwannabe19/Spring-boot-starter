@@ -22,14 +22,7 @@ public class KudoService {
     }
 
     public List<Kudo> getReceivedKudos(String username) {
-        List<Kudo> kudos = new ArrayList<>();
-        for (Kudo kudo: kudoRepository.findAll()
-             ) {
-            if (kudo.getRecipient().getUsername().equals(username)) {
-                kudos.add(kudo);
-            }
-        }
-        return kudos;
+        return kudoRepository.findReceivedKudoByUsername(username);
     }
 
 

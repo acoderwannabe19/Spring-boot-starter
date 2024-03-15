@@ -20,14 +20,7 @@ public class MoodService {
     public List<Mood> getMoods() {return moodRepository.findAll();}
 
     public List<Mood> getMoodsOf(String username) {
-        List<Mood> moods = new ArrayList<>();
-        for (Mood mood: moodRepository.findAll()
-             ) {
-            if (mood.getRoomie().getUsername().equals(username)) {
-                moods.add(mood);
-            }
-        }
-        return moods;
+        return moodRepository.getMoodsByRoomieUsername(username);
     }
 
 
